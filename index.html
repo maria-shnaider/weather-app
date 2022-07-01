@@ -19,18 +19,19 @@
   <body>
     <div class="container shadow-none p-3 mb-5">
       <div class="bg-light rounded">
-      <div class="row">
-        <div class="col current"><button type="submit" class="btn btn-info city current-city-button" id="current-city-button">Current</button></div>
-        <div class="col"><h1 class="city">Beijing</h1></div>
-        <div class="col"><h1 class="city">London</h1></div>
-        <div class="col"><h1 class="city">Toronto</h1></div>
-        <div class="col"><h1 class="city">Kyiv</h1></div>
-      </div>
+            <ul class="cities">
+              <li class="city"><a href="#" class="city-link" id="city-link-1">Beijing</a></li>
+              <li class="city"><a href="#" class="city-link" id="city-link-2">London</a></li>
+              <li class="city"><a href="#" class="city-link" id="city-link-3">Toronto</a></li>
+              <li class="city"><a href="#" class="city-link" id="city-link-4">Cairo</a></li>
+              <li class="city"><a href="#" class="city-link" id="city-link-5">Kyiv</a></li>
+            </ul>
       <div class="row search-area">
         <div class="col search">
         <form id="search-form">
           <input class="city-input" id="city-input" type="search" placeholder="Enter the city" autofocus/>
           <button type="submit" class="btn btn-info">Search</button>
+          <span class="col current"><button type="submit" class="btn btn-success current-city-button" id="current-city-button">Current</button></span>
         </form>
         </div>
         </div>
@@ -48,7 +49,7 @@
           <div class="col-4"><p class="weather small-text">Sunny</h3></div>
           <div class="col"><p class="weather small-text">Wind: 5 km/h</p></div>
         </div>
-        <div class="weather-container shadow-sm p-3 mb-4 bg-white rounded">
+        <div class="weather-container">
         <div class="row">
         <div class="col"><h4 class="day">Mon</h4></div>
         <div class="col"><h4 class="day">Tue</h4></div>
