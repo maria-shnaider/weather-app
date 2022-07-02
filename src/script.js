@@ -43,6 +43,8 @@ function showWeather(response) {
     .toUpperCase()}${weatherArray[0].slice(1)} ${weatherArray[1]}`;
   let weather = document.querySelector("#weather-description");
   weather.innerHTML = weatherCapitalized;
+
+  cels_temperature = response.data.main.temp;
 }
 
 function searchCity(event) {
@@ -64,23 +66,24 @@ searchForm.addEventListener("submit", searchCity);
 
 function convertToFahrenheit(event) {
   event.preventDefault();
-  let temp = document.querySelector("#celcius-temp").innerHTML;
-  let fahr = (temp * 9) / 5 + 32;
-  document.querySelector("#celcius-temp").innerHTML = Math.round(fahr);
+  let temp = document.querySelector("#celcius-temp");
+  let fahr = (cels_temperature * 9) / 5 + 32;
+  temp.innerHTML = `${Math.round(fahr)}°`;
 }
 
-let temperature = document.querySelector("#celcius-temp").innerHTML;
+let cels_temperature = null;
 
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", convertToFahrenheit);
+let fahrenheit = document.querySelector("#toggle-b");
+fahrenheit.addEventListener("change", convertToFahrenheit);
 
 function convertToCelcius(event) {
   event.preventDefault();
-  document.querySelector("#celcius-temp").innerHTML = temperature;
+  let temp = document.querySelector("#celcius-temp");
+  temp.innerHTML = `${Math.round(cels_temperature)}°`;
 }
 
-let celcius = document.querySelector("#celcius");
-celcius.addEventListener("click", convertToCelcius);
+let celcius = document.querySelector("#toggle-a");
+celcius.addEventListener("change", convertToCelcius);
 
 let currentDate = new Date();
 showTime(currentDate);

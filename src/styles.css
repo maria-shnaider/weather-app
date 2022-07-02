@@ -94,6 +94,12 @@
   text-decoration: none;
 }
 
+.code-link {
+  margin: 30px auto;
+  display: block;
+  text-align: center;
+}
+
 .city {
   display: inline-block;
   margin: 0 17px;
@@ -275,7 +281,7 @@
 .weather-details-item {
   text-decoration: none;
   display: inline-block;
-  margin-right: 22px;
+  margin-right: 21px;
 }
 
 .weather-details {
@@ -289,4 +295,8 @@
 
 .main-city {
   font-size: 25px;
+}
+
+.city-link:hover {
+  cursor: default;
 }
