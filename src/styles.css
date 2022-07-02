@@ -86,7 +86,7 @@
 
 .bg-light {
   padding: 15px 25px;
-  margin: 25px auto;
+  margin: 0 auto;
   background-color: #edeef2;
 }
 
@@ -268,5 +268,25 @@
 
 .main-temperature,
 .main-city {
-  margin-bottom: 1rem;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+.weather-details-item {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 22px;
+}
+
+.weather-details {
+  padding-left: 0;
+  margin-top: 60px;
+}
+
+.main-temperature {
+  font-size: 70px;
+}
+
+.main-city {
+  font-size: 25px;
 }

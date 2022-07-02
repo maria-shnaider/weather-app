@@ -29,10 +29,13 @@ function showWeather(response) {
     windSpeed = windSpeed.toFixed(1);
   }
   let wind = document.querySelector("#wind-speed");
-  wind.innerHTML = windSpeed;
+  wind.innerHTML = ` ${windSpeed}`;
   let humidity = response.data.main.humidity;
   let humid = document.querySelector("#humidity");
-  humid.innerHTML = humidity;
+  humid.innerHTML = ` ${humidity}`;
+  let pressure = response.data.main.pressure;
+  let press = document.querySelector("#pressure");
+  press.innerHTML = ` ${pressure}`;
   let weatherDescription = response.data.weather[0].description;
   let weatherArray = weatherDescription.split(" ");
   weatherCapitalized = `${weatherArray[0]
