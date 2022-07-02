@@ -127,3 +127,13 @@ for (let i = 0; i < defaultCity.length; ++i) {
   let city = defaultCity.item(i);
   city.addEventListener("click", showDefaultCity);
 }
+
+function search(city) {
+  let currentCity = document.querySelector("#current-city");
+  currentCity.innerHTML = city;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showWeather);
+}
+
+search("Berlin");
