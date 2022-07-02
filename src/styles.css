@@ -200,7 +200,7 @@
 
 .switch-vertical label {
   font-size: 15px;
-  line-height: 24px;
+  line-height: 22px;
   display: block;
   width: 80px;
   height: 50%;
@@ -220,7 +220,7 @@
 }
 
 .switch-vertical .toggle-inside {
-  height: 17px;
+  height: 14px;
   left: 3px;
   top: 3px;
   width: 17px;
@@ -249,4 +249,24 @@
 
 .search-area {
   margin: 25px 0;
+}
+
+.city-weather {
+  margin-top: 50px;
+}
+
+.img-big {
+  width: 380px;
+  clip-path: inset(0 0 0 110px);
+  margin-left: -132px;
+  margin-top: -30px;
+}
+
+.current-city {
+  margin-top: 40px;
+}
+
+.main-temperature,
+.main-city {
+  margin-bottom: 1rem;
 }

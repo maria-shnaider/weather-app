@@ -21,7 +21,7 @@ function showTime(date) {
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let celcius = document.querySelector("#celcius-temp");
-  celcius.innerHTML = temperature;
+  celcius.innerHTML = `${temperature}°`;
   let windSpeed = response.data.wind.speed;
   if (windSpeed >= 1) {
     windSpeed = Math.round(windSpeed);
