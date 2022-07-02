@@ -1,5 +1,26 @@
 let apiKey = "907907672178e58fe9f5148a143803fc";
 
+let imgArray = [
+  { imgCode: "01d", imgAddress: "images/01d.png" },
+  { imgCode: "01n", imgAddress: "images/01n.png" },
+  { imgCode: "02d", imgAddress: "images/02d.png" },
+  { imgCode: "02n", imgAddress: "images/02n.png" },
+  { imgCode: "03d", imgAddress: "images/03.png" },
+  { imgCode: "03n", imgAddress: "images/03.png" },
+  { imgCode: "04d", imgAddress: "images/03.png" },
+  { imgCode: "04n", imgAddress: "images/03.png" },
+  { imgCode: "09d", imgAddress: "images/09.png" },
+  { imgCode: "09n", imgAddress: "images/09.png" },
+  { imgCode: "10d", imgAddress: "images/10d.png" },
+  { imgCode: "10n", imgAddress: "images/10n.png" },
+  { imgCode: "11d", imgAddress: "images/11.png" },
+  { imgCode: "11n", imgAddress: "images/11.png" },
+  { imgCode: "13d", imgAddress: "images/13.png" },
+  { imgCode: "13n", imgAddress: "images/13.png" },
+  { imgCode: "50d", imgAddress: "images/50d.png" },
+  { imgCode: "50n", imgAddress: "images/50n.png" },
+];
+
 function showTime(date) {
   let day = date.getDay();
   let days = [
@@ -44,7 +65,15 @@ function showWeather(response) {
   let weather = document.querySelector("#weather-description");
   weather.innerHTML = weatherCapitalized;
 
-  cels_temperature = response.data.main.temp;
+  celsTemperature = response.data.main.temp;
+  let weatherIcon = response.data.weather[0].icon;
+
+  for (let i = 0; i < imgArray.length; ++i) {
+    if (imgArray[i].imgCode == weatherIcon) {
+      let image = document.querySelector("#img-big");
+      image.setAttribute("src", imgArray[i].imgAddress);
+    }
+  }
 }
 
 function searchCity(event) {
@@ -67,11 +96,11 @@ searchForm.addEventListener("submit", searchCity);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temp = document.querySelector("#celcius-temp");
-  let fahr = (cels_temperature * 9) / 5 + 32;
+  let fahr = (celsTemperature * 9) / 5 + 32;
   temp.innerHTML = `${Math.round(fahr)}°`;
 }
 
-let cels_temperature = null;
+let celsTemperature = null;
 
 let fahrenheit = document.querySelector("#toggle-b");
 fahrenheit.addEventListener("change", convertToFahrenheit);
@@ -79,7 +108,7 @@ fahrenheit.addEventListener("change", convertToFahrenheit);
 function convertToCelcius(event) {
   event.preventDefault();
   let temp = document.querySelector("#celcius-temp");
-  temp.innerHTML = `${Math.round(cels_temperature)}°`;
+  temp.innerHTML = `${Math.round(celsTemperature)}°`;
 }
 
 let celcius = document.querySelector("#toggle-a");
