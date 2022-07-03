@@ -58,12 +58,8 @@ function showWeather(response) {
   let press = document.querySelector("#pressure");
   press.innerHTML = ` ${pressure}`;
   let weatherDescription = response.data.weather[0].description;
-  let weatherArray = weatherDescription.split(" ");
-  weatherCapitalized = `${weatherArray[0]
-    .charAt(0)
-    .toUpperCase()}${weatherArray[0].slice(1)} ${weatherArray[1]}`;
   let weather = document.querySelector("#weather-description");
-  weather.innerHTML = weatherCapitalized;
+  weather.innerHTML = weatherDescription;
 
   celsTemperature = response.data.main.temp;
   let weatherIcon = response.data.weather[0].icon;
@@ -72,6 +68,7 @@ function showWeather(response) {
     if (imgArray[i].imgCode == weatherIcon) {
       let image = document.querySelector("#img-big");
       image.setAttribute("src", imgArray[i].imgAddress);
+      image.setAttribute("alt", weatherDescription);
     }
   }
 }

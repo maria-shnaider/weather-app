@@ -174,6 +174,10 @@
   margin-left: 50px;
 }
 
+.city-input:focus {
+  outline: 0.1em solid darkgray;
+}
+
 .search-area {
   margin: 25px 0;
 }
@@ -202,7 +206,7 @@
 .weather-details-item {
   text-decoration: none;
   display: inline-block;
-  margin-right: 21px;
+  margin-right: 19px;
 }
 
 .weather-details {
@@ -220,4 +224,12 @@
 
 .city-link:hover {
   cursor: default;
+}
+
+.weather-description {
+  display: inline-block;
+}
+
+.weather-description:first-letter {
+  text-transform: capitalize;
 }
