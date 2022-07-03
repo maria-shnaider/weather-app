@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="container shadow-none p-3 mb-5">
-      <div class="bg-light rounded">
+      <div class="app-wrapper bg-light rounded">
         <div class="row">
           <div class="col-10">
             <ul class="cities">
@@ -28,68 +28,63 @@
               <li class="city"><a href="#" class="city-link" id="city-link-4">Cairo</a></li>
               <li class="city"><a href="#" class="city-link" id="city-link-5">Kyiv</a></li>
             </ul>
-            </div>
-            <div class="col-2">
-
+          </div>
+          <div class="col-2">
             <span class="toggle-switch-container">
               <div class="toggle-switch switch-vertical">
                 <input id="toggle-a" type="radio" name="switch" checked="checked" />
                 <label for="toggle-a">C°</label>
                 <input id="toggle-b" type="radio" name="switch" />
                 <label for="toggle-b">F°</label>
-              <span class="toggle-outside">
-               <span class="toggle-inside"></span>
-              </span>
+                <span class="toggle-outside">
+                  <span class="toggle-inside"></span>
+                </span>
               </div>
-              </span>
-              </div>
-              </div>
-      
-  
-      
-        <div class="row search-area">
-    <div class="col-7 search">
-                <form class="search-form" id="search-form">
-        <span class="input-group md-form form-sm form-2 pl-0">
-          <input class="city-input form-control my-0 py-1" id="city-input" type="search" placeholder="Enter the city" autocomplete="off"/>
-            <button type="submit" class="city-input btn btn-secondary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-           </button>
-      </span>
-                  </form>  
-
+            </span>
           </div>
-
+        </div>
+        <div class="row search-area">
+          <div class="col-7 search">
+            <form class="search-form" id="search-form">
+              <span class="input-group md-form form-sm form-2 pl-0">
+                <input class="city-input form-control my-0 py-1" id="city-input" type="search" placeholder="Enter the city" autocomplete="off"/>
+                <button type="submit" class="city-input btn btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                </button>
+              </span>
+            </form>  
+          </div>
           <div class="col-5 search">
-
-       <button type="submit" class="btn btn-secondary current-city-button" id="current-city-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-          <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-          </svg> You are here
-        </button>
-      </div>
-  </div>
+            <button type="submit" class="btn btn-secondary current-city-button" id="current-city-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg> You are here
+            </button>
+          </div>
+        </div>
         <div class="row city-weather">
-          <div class="col-6"><img src="" class="img-big" id="img-big" alt=""></div> 
-<div class="col-6 current-city">
-<p class="today"><span class="date-time small-text" id="date-time"></span> — <span class="weather-description" id="weather-description"></span>
-</p>
-
-  <h1 class="main-temperature" id="celcius-temp"></h1>
-          <h3 class="main-city" id="current-city"></h3>
-          <ul class="weather-details">
-          <li class="weather-details-item"><img src="images/humidity.png"><span id="humidity"></span>%</li>
-          <li class="weather-details-item"><img src="images/wind.png"><span id="wind-speed"></span> km/h</li>
-          <li class="weather-details-item"><img src="images/pressure.png"><span id="pressure"></span> hPa</li>
-
-          </ul>
-            </div>
-         
+          <div class="col-6">
+            <img src="" class="img-big" id="img-big" alt="">
+          </div> 
+          <div class="col-6 current-city">
+            <p class="today">
+              <span class="date-time" id="date-time"></span> — 
+              <span class="weather-description" id="weather-description"></span>
+            </p>
+            <h1 class="main-temperature" id="celsius-temp"></h1>
+            <h3 class="main-city" id="current-city"></h3>
+            <ul class="weather-details">
+              <li class="weather-details-item"><img src="images/humidity.png"><span id="humidity"></span>%</li>
+              <li class="weather-details-item"><img src="images/wind.png"><span id="wind-speed"></span> km/h</li>
+              <li class="weather-details-item"><img src="images/pressure.png"><span id="pressure"></span> hPa</li>
+            </ul>
+          </div>
+        </div> 
         
-        <!-- <div class="weather-container">
+      <!-- <div class="weather-container">
         <div class="row">
         <div class="col"><h4 class="day">Mon</h4></div>
         <div class="col"><h4 class="day">Tue</h4></div>
@@ -111,11 +106,11 @@
         <div class="col"><h4 class="temp">21°</h4></div>
         <div class="col"><h4 class="temp">18°</h4></div>
       </div>
-    </div> -->
+      </div> -->
+      
+      </div>
+    <div class="code-link"><a href="https://github.com/maria-shnaider/weather-app" target="_blank">Open-source code</a> by Maria Shnaider </div></div> 
     </div>
-    </div>
-   <div class="code-link"><a href="https://github.com/maria-shnaider/weather-app" target="_blank">Open-source code</a> by Maria Shnaider </div></div> 
-   </div>
     <script src="src/script.js"></script>
   </body>
 </html>

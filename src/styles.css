@@ -5,7 +5,7 @@
   min-width: 450px;
 }
 
-.bg-light {
+.app-wrapper {
   padding: 15px 25px;
   margin: 0 auto;
   background-color: #edeef2;
@@ -174,10 +174,6 @@
   margin-left: 50px;
 }
 
-.city-input:focus {
-  outline: 0.1em solid darkgray;
-}
-
 .search-area {
   margin: 25px 0;
 }
@@ -195,6 +191,7 @@
 
 .current-city {
   margin-top: 40px;
+  text-transform: capitalize;
 }
 
 .main-temperature,
