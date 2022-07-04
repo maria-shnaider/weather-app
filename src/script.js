@@ -21,7 +21,8 @@ let imgArray = [
   { imgCode: "50n", imgAddress: "images/50n.png" },
 ];
 
-function showTime(date) {
+function showTime(timestamp) {
+  let date = new Date(timestamp);
   let day = date.getDay();
   let days = [
     "Sunday",
@@ -40,6 +41,7 @@ function showTime(date) {
 }
 
 function showWeather(response) {
+  let currentCity = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
   let celsius = document.querySelector("#celsius-temp");
   let windSpeed = response.data.wind.speed;
@@ -53,6 +55,8 @@ function showWeather(response) {
   let weatherIcon = response.data.weather[0].icon;
   let toggleCelsius = document.querySelector("#toggle-a");
 
+  currentCity.innerHTML = response.data.name;
+
   celsius.innerHTML = `${temperature}°`;
   if (windSpeed >= 1) {
     windSpeed = Math.round(windSpeed);
@@ -64,6 +68,13 @@ function showWeather(response) {
   press.innerHTML = ` ${pressure}`;
   weather.innerHTML = weatherDescription;
   toggleCelsius.checked = true;
+
+  let date = new Date();
+  let userTimeDifference = date.getTimezoneOffset() * 60000;
+  let utc0Timestamp = date.getTime() + userTimeDifference;
+  let timezone = response.data.timezone * 1000;
+  let cityTime = utc0Timestamp + timezone;
+  showTime(cityTime);
 
   for (let i = 0; i < imgArray.length; ++i) {
     if (imgArray[i].imgCode == weatherIcon) {
@@ -79,11 +90,16 @@ function showWeather(response) {
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value.trim();
-  let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = city;
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
-  axios.get(apiUrl).then(showWeather);
+  axios
+    .get(apiUrl)
+    .then(showWeather)
+    .catch(() => {
+      document.querySelector("#current-city").innerHTML =
+        "Is it a real city, huh?";
+    });
 }
 
 function convertToFahrenheit(event) {
@@ -148,9 +164,6 @@ fahrenheit.addEventListener("change", convertToFahrenheit);
 
 let celsius = document.querySelector("#toggle-a");
 celsius.addEventListener("change", convertToCelsius);
-
-let currentDate = new Date();
-showTime(currentDate);
 
 let currentCityButton = document.querySelector("#current-city-button");
 currentCityButton.addEventListener("click", getCurrentLocation);

@@ -191,7 +191,6 @@
 
 .current-city {
   margin-top: 40px;
-  text-transform: capitalize;
 }
 
 .main-temperature,
@@ -227,6 +226,6 @@
   display: inline-block;
 }
 
-.weather-description:first-letter {
+.weather-description::first-letter {
   text-transform: capitalize;
 }
