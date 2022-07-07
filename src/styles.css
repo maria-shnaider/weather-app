@@ -229,3 +229,42 @@
 .weather-description::first-letter {
   text-transform: capitalize;
 }
+
+.forecast-icon {
+  width: 65px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+.forecast-container {
+  display: block;
+  margin: 15px 0;
+  padding: 7px;
+  background-color: white;
+  border-radius: 20px;
+  width: fit-content;
+  box-shadow: rgba(120, 128, 136, 0.175) 0px -2px 3px 1px inset;
+  width: 100%;
+  text-align: center;
+}
+
+.forecast-day,
+.forecast-min-temp {
+  opacity: 0.8;
+}
+
+.forecast-day-wrapper {
+  margin: 5px 10px;
+  padding: 0 5px;
+  border-right: 1px solid rgb(108, 117, 125, 0.6);
+}
+
+.img-container {
+  height: 65px;
+}
+
+.forecast-day {
+  margin: 0;
+}
