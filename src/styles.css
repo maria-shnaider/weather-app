@@ -186,7 +186,11 @@
   width: 380px;
   clip-path: inset(0 0 0 110px);
   margin-left: -132px;
-  margin-top: -30px;
+  margin-top: -15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
 }
 
 .current-city {
@@ -267,4 +271,8 @@
 
 .forecast-day {
   margin: 0;
+}
+
+.big-img-container {
+  height: 320px;
 }
