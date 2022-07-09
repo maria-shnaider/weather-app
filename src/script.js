@@ -40,6 +40,72 @@ function showTime(timestamp) {
   time.innerHTML = `${days[day]}, ${hour}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function getForecast(coordinates) {
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(displayForecast);
+}
+
+function showMainIcon(response) {
+  let weatherIcon = response.data.weather[0].icon;
+  let weatherDescription = response.data.weather[0].description;
+  for (let i = 0; i < imgArray.length; ++i) {
+    if (imgArray[i].imgCode == weatherIcon) {
+      let image = document.querySelector("#img-big");
+      image.setAttribute("src", imgArray[i].imgAddress);
+      image.setAttribute("alt", weatherDescription);
+    }
+  }
+}
+
+function showForecastIcon(response) {
+  let weatherIcon = response.weather[0].icon;
+  let alt = response.weather[0].description;
+  for (let i = 0; i < imgArray.length; ++i) {
+    if (imgArray[i].imgCode == weatherIcon) {
+      let src = imgArray[i].imgAddress;
+      return { src, alt };
+    }
+  }
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast-container");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML += `
+  <div class="col-2 forecast-day-wrapper">
+    <h5 class="forecast-day">${formatDay(forecastDay.dt)}</h5>
+    <div class="img-container">
+      <img class="forecast-icon" src=${
+        showForecastIcon(forecastDay).src
+      } alt="${showForecastIcon(forecastDay).alt}" />
+    </div>
+    <div class="forecast-temp">
+      <span class="forecast-max-temp">${Math.round(
+        forecastDay.temp.max
+      )}°</span>
+      <span class="forecast-min-temp">${Math.round(
+        forecastDay.temp.min
+      )}°</span>
+    </div>
+  </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   let currentCity = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
@@ -50,10 +116,9 @@ function showWeather(response) {
   let humid = document.querySelector("#humidity");
   let pressure = response.data.main.pressure;
   let press = document.querySelector("#pressure");
-  let weatherDescription = response.data.weather[0].description;
   let weather = document.querySelector("#weather-description");
-  let weatherIcon = response.data.weather[0].icon;
   let toggleCelsius = document.querySelector("#toggle-a");
+  let weatherDescription = response.data.weather[0].description;
 
   currentCity.innerHTML = response.data.name;
 
@@ -76,15 +141,11 @@ function showWeather(response) {
   let cityTime = utc0Timestamp + timezone;
   showTime(cityTime);
 
-  for (let i = 0; i < imgArray.length; ++i) {
-    if (imgArray[i].imgCode == weatherIcon) {
-      let image = document.querySelector("#img-big");
-      image.setAttribute("src", imgArray[i].imgAddress);
-      image.setAttribute("alt", weatherDescription);
-    }
-  }
-
   celsTemperature = response.data.main.temp;
+
+  getForecast(response.data.coord);
+
+  showMainIcon(response);
 }
 
 function searchCity(event) {
@@ -116,6 +177,7 @@ function convertToCelsius(event) {
 }
 
 function showCurrentCity(response) {
+  console.log(response);
   let currentLocation = response.data.name;
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = currentLocation;
